@@ -3,6 +3,7 @@ package com.example.ditimtrieuphu.view.act;
 import com.example.ditimtrieuphu.R;
 import com.example.ditimtrieuphu.view.OnActionCallBack;
 import com.example.ditimtrieuphu.view.fragment.M001SplashFragment;
+import com.example.ditimtrieuphu.view.fragment.M002MainFragment;
 import com.example.ditimtrieuphu.view.viewmodel.MainViewModel;
 
 
@@ -24,9 +25,14 @@ public class MainActivity extends BaseAct<MainViewModel> implements OnActionCall
         showFragment(R.id.container_view, splashFragment, false);
     }
 
-
     @Override
     public void onCallBack(String key, Object... obj) {
-
+        switch (key) {
+            case M001SplashFragment.KEY_SHOW_MAIN_FRAGMENT:
+                M002MainFragment mainFragment = new M002MainFragment();
+                mainFragment.setCallBack(this);
+                showFragment(R.id.container_view, mainFragment, false);
+                break;
+        }
     }
 }
